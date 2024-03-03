@@ -1,1 +1,0 @@
-this is a script in working state not completed yet
