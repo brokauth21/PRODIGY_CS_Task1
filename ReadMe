@@ -1,2 +1,52 @@
-This is my 1st REPO
-Author [oxploited19]
+# Caesar Cipher Encryption and Decryption
+
+## Overview
+
+Welcome to my Caesar Cipher Python script! This script allows users to encrypt and decrypt messages using the classic Caesar Cipher algorithm.
+
+## Features
+
+- **User-Friendly Interface**: An interactive console-based interface that guides users through encryption and decryption processes.
+
+- **Dynamic Welcome Banner**: Enjoy a captivating welcome banner and author information for a personalized touch.
+
+- **Loading Bars**: Witness an engaging loading experience with spinner and hash loading bars during encryption and decryption.
+
+- **File Saving Capability**: Easily save encrypted or decrypted messages to a file for future reference.
+
+- **Random Shift Generator**: Opt for a random shift value for an added layer of security.
+
+## Usage
+
+1. Run the script in a Python environment.
+2. Choose between encryption and decryption.
+3. Input your message.
+4. Enter the shift value.
+5. Witness the magic of Caesar Cipher!
+
+## Additional Features
+
+- Save results to a file.
+- Generate a random shift for next time.
+
+## Dependencies
+
+- `colorama`: Used for colorful console output.
+
+## How to Run
+
+1. Install dependencies: `pip install colorama`.
+2. Run the script: `python script_name.py`.
+
+## Contribution
+
+Feel free to contribute by forking the repository and submitting pull requests. Any suggestions or improvements are highly appreciated.
+
+## Acknowledgments
+
+- Special thanks to Prodigy Infotech for the opportunity to complete Task 01.
+
+## Author
+
+- Omar Mahmood #oxploited19
+
