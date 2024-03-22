@@ -55,17 +55,18 @@ def display_author_info():
     time.sleep(1)
 
 def encrypt_decrypt_option():
-    print("\nChoose an option:")
-    print("1. Encrypt")
-    print("2. Decrypt")
-    option = input("Enter the option number (1/2): ")
-    return option
+    while True:
+        print("\nChoose an option:")
+        print("1. Encrypt")
+        print("2. Decrypt")
+        option = input("Enter the option number (1/2): ")
+        if option in ['1', '2']:
+            return option
+        else:
+            print("Invalid option. Please enter either '1' for Encrypt or '2' for Decrypt.")
 
 def colorful_output(message, color=Fore.BLUE):
     print(color + message + Style.RESET_ALL)
-
-def random_shift_generator():
-    return random.randint(1, 25)
 
 def save_to_file(message, filename):
     try:
@@ -114,40 +115,42 @@ def thank_you_message():
     print("\nThank you for using OXPLOITED19's Encryption & Decryption Script!")
 
 def main():
-    display_welcome()
+    while True:
+        display_welcome()
 
-    option = encrypt_decrypt_option()
-    message = input("\nEnter the message: ")
+        option = encrypt_decrypt_option()
+        message = input("\nEnter the message: ")
 
-    if option == '1':
-        shift = get_shift()
-        spinner_loading_bar()
-        encrypted_message = caesar_cipher(message, shift)
-        colorful_output(f"\nEncrypted message: {encrypted_message}")
-        decrypt_option = input("\nDo you want to decrypt the recently encrypted message? (y/n): ").lower()
-        if decrypt_option == 'y':
+        if option == '1':
+            shift = get_shift()
+            spinner_loading_bar()
+            encrypted_message = caesar_cipher(message, shift)
+            colorful_output(f"\nEncrypted message: {encrypted_message}")
+            decrypt_option = input("\nDo you want to decrypt the recently encrypted message? (y/n): ").lower()
+            if decrypt_option == 'y':
+                decrypt_banner()
+                decrypted_message = caesar_cipher(encrypted_message, -shift)
+                colorful_output(f"\nDecrypted message: {decrypted_message}")
+
+        elif option == '2':
+            shift = -get_shift()
             decrypt_banner()
-            decrypted_message = caesar_cipher(encrypted_message, -shift)
-            colorful_output(f"\nDecrypted message: {decrypted_message}")
 
-    elif option == '2':
-        shift = -get_shift()
-        decrypt_banner()
+        encrypted_decrypted_message = caesar_cipher(message, shift)
+        colorful_output(f"\n{'Decrypted' if option == '2' else 'Encrypted'} message: {encrypted_decrypted_message}")
 
-    encrypted_decrypted_message = caesar_cipher(message, shift)
-    colorful_output(f"\n{'Decrypted' if option == '2' else 'Encrypted'} message: {encrypted_decrypted_message}")
+        display_author_info()
 
-    display_author_info()
+        # Additional Features
+        save_option = input("\nDo you want to save the result to a file? (y/n): ").lower()
+        if save_option == 'y':
+            filename = input("Enter the filename (including extension): ")
+            save_to_file(encrypted_decrypted_message, filename)
 
-    # Additional Features
-    save_option = input("\nDo you want to save the result to a file? (y/n): ").lower()
-    if save_option == 'y':
-        filename = input("Enter the filename (including extension): ")
-        save_to_file(encrypted_decrypted_message, filename)
-
-    random_shift_option = input("\nDo you want to generate a random shift for next time? (y/n): ").lower()
-    if random_shift_option == 'y':
-        print(f"Random Shift Generated: {random_shift_generator()}")
+        # Ask the user if they want to encrypt/decrypt another message
+        again_option = input("\nDo you want to encrypt or decrypt another message? (y/n): ").lower()
+        if again_option != 'y':
+            break
 
     thank_you_message()
 
